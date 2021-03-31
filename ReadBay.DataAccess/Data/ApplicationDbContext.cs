@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReadBay.Data
+namespace ReadBay.DataAccess.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
