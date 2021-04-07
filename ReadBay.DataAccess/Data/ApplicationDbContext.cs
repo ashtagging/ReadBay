@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ReadBay.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,6 @@ namespace ReadBay.DataAccess.Data
         {
 
         }
+        public DbSet<Category> Categories { get; set; }
     }
 }

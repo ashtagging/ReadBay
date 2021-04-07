@@ -1,0 +1,55 @@
+﻿@*Whenever we are working with any of the views the first thing we need to check if we need a model
+    We check this by going to the controller (Category) and having a look at what we are returning to view
+       In this case we are returning --- return View(category) so the model will be as below*@
+
+
+@model ReadBay.Models.Category
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Create Category";
+
+}
+
+<form method="post">
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Id != 0)
+        {
+            // Edit View 
+            title = "Edit Category";
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8 pt-4">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Id != 0)
+                    {
+                        <partial name="_EditAndBackToListButton" model="Model.Id" />
+                    }
+                    else
+                    {
+                        <partial name="_CreateAndBackToListButton" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+ @*Includes valdiations for client side within the view*@
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
