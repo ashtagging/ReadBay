@@ -32,7 +32,6 @@ namespace ReadBay.DataAccess.Data.Repository.IRepository
 
         void Remove(T entity);
 
-
         void RemoveRange(IEnumerable<T> entity);
     }
 }

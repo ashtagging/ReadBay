@@ -15,10 +15,12 @@ namespace ReadBay.DataAccess.Data.Repository
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
-            Category = new CategoryRepository(_db);
-            SP_Call = new SP_Call(_db);
+            Category = new CategoryRepository(_db);            
             BookType = new BookTypeRepository(_db);
             Product = new ProductRepository(_db);
+            Company = new CompanyRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
+            SP_Call = new SP_Call(_db);
         }
 
         public ICategoryRepository Category { get; private set; }
@@ -27,7 +29,11 @@ namespace ReadBay.DataAccess.Data.Repository
 
         public IProductRepository Product { get; private set; }
 
-        public ISP_Call SP_Call{ get; private set; }     
+        public ICompanyRepository Company { get; set; }
+
+        public ISP_Call SP_Call{ get; private set; }
+
+        public IApplicationUserRepository ApplicationUser { get; private set; }
 
         public void Dispose()
         {
