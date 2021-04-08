@@ -1,4 +1,4 @@
-Links for Javascript & CSS Toastr notifications, DataTables, Sweet Slerts and Font Awesome
+Links for Javascript & CSS Toastr notifications, DataTables, Sweet Alerts and Font Awesome
 
 CSS:
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
