@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using ReadBay.DataAccess.Data;
 using ReadBay.DataAccess.Data.Repository;
 using ReadBay.DataAccess.Data.Repository.IRepository;
+using ReadBay.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +35,12 @@ namespace ReadBay
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()     //AdddefaultIdentity does not have support for IdentityRole confirm signin required also removed and add default topken providers added
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IUnitOfWork, UnitOfWork>(); //UnitOfWork added as part of dependency injection  
             services.AddControllersWithViews(); //.AddRazorRuntimeCompilation(); Needed for 3.1 and below
-             // services.AddRazorPages(); // Needed in 3.1 and below
+            services.AddRazorPages(); //Needed when Scaffolding identity
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

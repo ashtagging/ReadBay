@@ -8,6 +8,7 @@ using System.Text;
 namespace ReadBay.Models
 {
     // Adding properties to ASpnet User table so we need to inherit from IdentityUser
+    // Application User Properties have been added to the Register Identity Model
     public class ApplicationUser: IdentityUser
     {
         [Required]
