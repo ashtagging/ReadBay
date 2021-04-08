@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ReadBay.DataAccess.Data.Repository.IRepository;
 using ReadBay.Models;
 using ReadBay.Models.ViewModels;
 using System;
@@ -15,14 +16,19 @@ namespace ReadBay.Areas.Customer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //Need to Retrieve all of the Books and Products to the view (UnitOfWork Required)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,BookType");
+            return View(productList);
         }
 
         public IActionResult Privacy()

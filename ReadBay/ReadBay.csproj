@@ -22,4 +22,8 @@
     <ProjectReference Include="..\ReadBay.Utility\ReadBay.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Products\" />
+  </ItemGroup>
+
 </Project>

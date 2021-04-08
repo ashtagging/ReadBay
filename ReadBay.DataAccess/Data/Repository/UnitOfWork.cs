@@ -17,16 +17,24 @@ namespace ReadBay.DataAccess.Data.Repository
             _db = db;
             Category = new CategoryRepository(_db);
             SP_Call = new SP_Call(_db);
+            BookType = new BookTypeRepository(_db);
+            Product = new ProductRepository(_db);
         }
+
         public ICategoryRepository Category { get; private set; }
-        public ISP_Call SP_Call{ get; private set; }
+
+        public IBookTypeRepository BookType { get; private set; }
+
+        public IProductRepository Product { get; private set; }
+
+        public ISP_Call SP_Call{ get; private set; }     
 
         public void Dispose()
         {
             _db.Dispose();
         }
 
-        // Not saving any changes we make in rpeository but are saving changes in each models repository in Update()
+        // Changes we make in repository are not saved but are saved in each models repository in Update()
         public void Save()
         {
             _db.SaveChanges();
