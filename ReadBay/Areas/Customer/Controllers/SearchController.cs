@@ -32,7 +32,11 @@ namespace ReadBay.Areas.Customer.Controllers
         {
             return View();
         }
-        
+        public IActionResult Grid()
+        {
+            IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,BookType");
+            return View(productList);
+        }
 
         //GET: Admin/Product/Upsert
         public IActionResult Upsert(int? id)

@@ -11,13 +11,14 @@ function loadDataTable() {
             "url": "/Admin/Product/GetAll"
         },
         "columns": [
-            { "data": "title", "width": "15%" },
-            { "data": "isbn", "width": "15%" },
-            { "data": "author", "width": "15%" },
-            { "data": "category.name", "width": "15%" },
-            { "data": "price", "width": "15%" },
-            { "data": "price50", "width": "15%" },
-            { "data": "price100", "width": "15%" },
+            { "data": "title", "width": "10%" },
+            { "data": "isbn", "width": "10%" },
+            { "data": "author", "width": "10%" },
+            { "data": "bookType.name", "width": "10%" },
+            { "data": "category.name", "width": "10%" },
+            { "data": "price", "width": "10%" },
+            { "data": "price50", "width": "10%" },
+            { "data": "price100", "width": "10%" },
             //{
             //    "data": "id",
             //    "render": function (data) {
