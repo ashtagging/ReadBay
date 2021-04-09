@@ -40,7 +40,25 @@ namespace ReadBay
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IUnitOfWork, UnitOfWork>(); //UnitOfWork added as part of dependency injection  
             services.AddControllersWithViews(); //.AddRazorRuntimeCompilation(); Needed for 3.1 and below
-            services.AddRazorPages(); //Needed when Scaffolding identity
+            services.AddRazorPages();  //Needed when Scaffolding identity
+            services.ConfigureApplicationCookie(options =>
+            {   // Reflects the correct Area in the WebUrl
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+            // Facebook Login
+            services.AddAuthentication().AddFacebook(options =>
+            {
+                options.AppId = "203049561271446";
+                options.AppSecret = "db0a86f0a89534f100025573823bd08e";
+            });            
+            // Google Login
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "994167471286-cjbjtpn5ti8sn4fl8m2vsf37ftk5uujf.apps.googleusercontent.com";
+                options.ClientSecret = "TRyy-M4j52BI2N2dIyY34lxR";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

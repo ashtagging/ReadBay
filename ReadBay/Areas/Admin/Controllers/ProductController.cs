@@ -15,7 +15,8 @@ using System.IO;
 namespace ReadBay.Areas.Admin.Controllers
 {
     //Have to explicitly define that this is in the Admin Area
-    [Area("Admin")]    
+    [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         // Need to get from dependency injection in startup.cs

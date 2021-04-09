@@ -5,8 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Apis" Version="1.51.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.5" />
   </ItemGroup>
 
 </Project>
