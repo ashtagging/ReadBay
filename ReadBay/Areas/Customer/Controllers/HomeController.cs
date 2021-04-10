@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ReadBay.DataAccess.Data.Repository.IRepository;
+using ReadBay.DataAccess.Repository.IRepository;
 using ReadBay.Models;
 using ReadBay.Models.ViewModels;
 using System;

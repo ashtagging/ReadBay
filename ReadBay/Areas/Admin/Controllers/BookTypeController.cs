@@ -6,7 +6,7 @@ using ReadBay.Models;
 using ReadBay.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ReadBay.DataAccess.Data.Repository.IRepository;
+using ReadBay.DataAccess.Repository.IRepository;
 
 namespace ReadBay.Areas.Admin.Controllers
 {

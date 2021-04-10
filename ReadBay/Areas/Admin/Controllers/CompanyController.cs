@@ -6,14 +6,13 @@ using ReadBay.Models;
 using ReadBay.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ReadBay.DataAccess.Data.Repository.IRepository;
+using ReadBay.DataAccess.Repository.IRepository;
 
 namespace ReadBay.Areas.Admin.Controllers
 {
-    //Have to explicitly define that this is in the Admin Area
+    //Have to explicitly define that this is in the Admin Area 
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin)]
-    [Authorize(Roles = SD.Role_Employee)]
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
     public class CompanyController : Controller
     {
         // Need to get from dependency injection in startup.cs

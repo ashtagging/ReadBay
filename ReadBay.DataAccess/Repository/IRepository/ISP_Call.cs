@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReadBay.DataAccess.Data.Repository.IRepository
+namespace ReadBay.DataAccess.Repository.IRepository
 {
     // Interface Stored Procedure Calls Wrap multiple repositories inside a unit of work
     // Stored Procedure call that we can use tyo call stored procedures

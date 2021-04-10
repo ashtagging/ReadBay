@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReadBay.DataAccess.Data.Repository.IRepository
+namespace ReadBay.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
@@ -17,6 +17,10 @@ namespace ReadBay.DataAccess.Data.Repository.IRepository
         ICompanyRepository Company { get; }
 
         IApplicationUserRepository ApplicationUser { get; }
+        IOrderDetailRepository OrderDetail { get; }
+        IOrderHeaderRepository OrderHeader { get; }
+        IShoppingCartRepository ShoppingCart { get; }
+
 
         ISP_Call SP_Call { get; }
 

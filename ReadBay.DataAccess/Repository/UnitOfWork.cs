@@ -1,11 +1,14 @@
-﻿using ReadBay.DataAccess.Data.Repository.IRepository;
+﻿
+using ReadBay.DataAccess.Repository;
+using ReadBay.DataAccess.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ReadBay.DataAccess.Data;
 
-namespace ReadBay.DataAccess.Data.Repository
+namespace ReadBay.DataAccess.Repository
 {
     // Not accessible unless added to configure services in startup.cs
     public class UnitOfWork : IUnitOfWork
@@ -19,7 +22,10 @@ namespace ReadBay.DataAccess.Data.Repository
             BookType = new BookTypeRepository(_db);
             Product = new ProductRepository(_db);
             Company = new CompanyRepository(_db);
-            ApplicationUser = new ApplicationUserRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);           
+            OrderHeader = new OrderHeaderRepository(_db);
+            OrderDetail = new OrderDetailRepository(_db);
+            ShoppingCart = new ShoppingCartRepository(_db);
             SP_Call = new SP_Call(_db);
         }
 
@@ -29,7 +35,13 @@ namespace ReadBay.DataAccess.Data.Repository
 
         public IProductRepository Product { get; private set; }
 
-        public ICompanyRepository Company { get; set; }
+        public ICompanyRepository Company { get; set; } 
+
+        public IShoppingCartRepository ShoppingCart  { get; set; } 
+
+        public IOrderDetailRepository OrderDetail { get; set; } 
+
+        public IOrderHeaderRepository OrderHeader { get; set; } 
 
         public ISP_Call SP_Call{ get; private set; }
 

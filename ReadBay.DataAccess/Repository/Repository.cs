@@ -1,5 +1,5 @@
 ﻿using ReadBay.DataAccess.Data;
-using ReadBay.DataAccess.Data.Repository.IRepository;
+using ReadBay.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ReadBay.DataAccess.Data.Repository
+namespace ReadBay.DataAccess.Repository
 {
     // Implements all the interfaces of IRepository
     // We are modifying the database so we need the DBContext 

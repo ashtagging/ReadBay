@@ -1,4 +1,5 @@
-﻿using ReadBay.DataAccess.Data.Repository.IRepository;
+﻿using ReadBay.DataAccess.Data;
+using ReadBay.DataAccess.Repository.IRepository;
 using ReadBay.Models;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReadBay.DataAccess.Data.Repository
+namespace ReadBay.DataAccess.Repository
 {
     public class ApplicationUserRepository : Repository<ApplicationUser>, IApplicationUserRepository
     {        

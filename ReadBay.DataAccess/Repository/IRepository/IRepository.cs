@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReadBay.DataAccess.Data.Repository.IRepository
+namespace ReadBay.DataAccess.Repository.IRepository
 {
     // This is a generic repository in which the type of object (T) is not known
     public interface IRepository<T> where T: class
