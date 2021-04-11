@@ -59,6 +59,11 @@ namespace ReadBay
                 options.ClientId = "994167471286-cjbjtpn5ti8sn4fl8m2vsf37ftk5uujf.apps.googleusercontent.com";
                 options.ClientSecret = "TRyy-M4j52BI2N2dIyY34lxR";
             });
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,9 +82,8 @@ namespace ReadBay
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
 

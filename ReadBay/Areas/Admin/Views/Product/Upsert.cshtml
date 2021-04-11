@@ -107,7 +107,7 @@
                     Book Type
                 </div>
                 <div class="col-8">
-                    @Html.DropDownListFor(m => m.Product.BookTypeId, Model.BookTypeList, "-Select a Cover Type", new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.Product.BookTypeId, Model.BookTypeList, "-Select a Book Type", new { @class = "form-control" })
                     <span asp-validation-for="Product.BookTypeId" class="text-danger"></span>
                 </div>
             </div>
