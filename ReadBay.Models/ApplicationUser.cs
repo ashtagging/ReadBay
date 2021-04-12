@@ -15,8 +15,8 @@ namespace ReadBay.Models
         public string Name { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }
-        public string State { get; set; }
-        public string PostalCode { get; set; }
+        public string County { get; set; }
+        public string PostCode { get; set; }
 
         // Not all users will belong to a company - Some users will be individual users aswell  
         // ? is added to companyid as it can be empty or a null value, this makes it a nullable field

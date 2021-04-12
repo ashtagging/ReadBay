@@ -33,7 +33,7 @@ namespace ReadBay.DataAccess.Repository
                 objFromDb.Price = product.Price;
                 objFromDb.Price50 = product.Price50;
                 objFromDb.Price100 = product.Price100;
-                objFromDb.ListPrice = product.ListPrice;
+                objFromDb.RRP = product.RRP;
                 objFromDb.Title = product.Title;
                 objFromDb.Description = product.Description;
                 objFromDb.CategoryId = product.CategoryId;

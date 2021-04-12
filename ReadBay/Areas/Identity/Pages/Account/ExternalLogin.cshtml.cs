@@ -58,8 +58,8 @@ namespace ReadBay.Areas.Identity.Pages.Account
             public string Name { get; set; }
             public string StreetAddress { get; set; }
             public string City { get; set; }
-            public string State { get; set; }
-            public string PostalCode { get; set; }
+            public string County { get; set; }
+            public string PostCode { get; set; }
             public string PhoneNumber { get; set; }
         }
 
@@ -138,8 +138,8 @@ namespace ReadBay.Areas.Identity.Pages.Account
                     Email = Input.Email,
                     StreetAddress = Input.StreetAddress,
                     City = Input.City,
-                    State = Input.State,
-                    PostalCode = Input.PostalCode,
+                    County = Input.County,
+                    PostCode = Input.PostCode,
                     Name = Input.Name,
                     PhoneNumber = Input.PhoneNumber,
                 };

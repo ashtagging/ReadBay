@@ -26,7 +26,7 @@ namespace ReadBay.Models
 
         [Required]
         [Range(0, 10000)]
-        public double ListPrice { get; set; }
+        public double RRP { get; set; }
 
         [Required]
         [Range(0, 10000)]

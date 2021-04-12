@@ -39,9 +39,9 @@ namespace ReadBay.Models
         [Required]
         public string City { get; set; }
         [Required]
-        public string State { get; set; }
+        public string County { get; set; }
         [Required]
-        public string PostalCode { get; set; }
+        public string PostCode { get; set; }
         [Required]
         public string Name { get; set; }
     }
