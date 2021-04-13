@@ -12,6 +12,7 @@ using ReadBay.DataAccess.Data;
 using ReadBay.DataAccess.Repository;
 using ReadBay.DataAccess.Repository.IRepository;
 using ReadBay.Utility;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,11 +39,13 @@ namespace ReadBay
             services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()     //AdddefaultIdentity does not have support for IdentityRole confirm signin required also removed and add default topken providers added
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddScoped<IUnitOfWork, UnitOfWork>(); //UnitOfWork added as part of dependency injection  
             services.AddControllersWithViews(); //.AddRazorRuntimeCompilation(); Needed for 3.1 and below
             services.AddRazorPages();  //Needed when Scaffolding identity
             services.ConfigureApplicationCookie(options =>
-            {   // Reflects the correct Area in the WebUrl
+            {   
+                // Reflects the correct Area in the WebUrl
                 options.LoginPath = $"/Identity/Account/Login";
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
@@ -83,6 +86,7 @@ namespace ReadBay
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();

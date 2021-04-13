@@ -13,10 +13,10 @@
                 <div class="card">
                     <div class="card-header bg-dark text-light ml-0 row container">
                         <div class="col-6">
-                            <h3>
+                            <h4>
                                 <i class="fa fa-shopping-cart"></i> &nbsp;
                                 Shopping Cart
-                            </h3>
+                            </h4>
                         </div>
                         <div class="col-6 text-right">
                             <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-success ">Continue Shopping</a>
@@ -68,6 +68,9 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-4 col-md-6 offset-lg-8 offset-md-6 ">
+                            <a asp-area="Customer" asp-controller="Cart" asp-action="Summary" class="btn btn-success form-control">Summary</a>
                         </div>
                     </div>
                 </div>
