@@ -25,4 +25,8 @@
     <ProjectReference Include="..\ReadBay.Utility\ReadBay.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

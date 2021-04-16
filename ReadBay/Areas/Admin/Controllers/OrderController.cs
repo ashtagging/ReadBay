@@ -141,8 +141,8 @@ namespace ReadBay.Areas.Admin.Controllers
         //    orderHEaderFromDb.PhoneNumber = OrderVM.OrderHeader.PhoneNumber;
         //    orderHEaderFromDb.StreetAddress = OrderVM.OrderHeader.StreetAddress;
         //    orderHEaderFromDb.City = OrderVM.OrderHeader.City;
-        //    orderHEaderFromDb.County = OrderVM.OrderHeader.State;
-        //    orderHEaderFromDb.PostCode = OrderVM.OrderHeader.PostalCode;
+        //    orderHEaderFromDb.County = OrderVM.OrderHeader.County;
+        //    orderHEaderFromDb.PostCode = OrderVM.OrderHeader.PostCode;
         //    if (OrderVM.OrderHeader.Carrier != null)
         //    {
         //        orderHEaderFromDb.Carrier = OrderVM.OrderHeader.Carrier;
