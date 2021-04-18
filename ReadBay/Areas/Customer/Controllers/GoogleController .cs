@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ReadBay.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    public class SearchController : Controller
+    public class GoogleController : Controller
     {
         // Need to get from dependency injection in startup.cs
         private readonly IUnitOfWork _unitOfWork;
@@ -21,7 +21,7 @@ namespace ReadBay.Areas.Customer.Controllers
         // Need this to be able to upload images to the server into a folder
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public SearchController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+        public GoogleController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
@@ -38,7 +38,14 @@ namespace ReadBay.Areas.Customer.Controllers
             return View(productList);
         }
 
-       
+        public IActionResult Google()
+        {
+            return View();
+        }
+        public IActionResult Book()
+        {
+            return View();
+        }
 
         //GET: Admin/Product/Upsert
         public IActionResult Upsert(int? id)

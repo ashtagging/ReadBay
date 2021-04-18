@@ -46,6 +46,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                 <a class="dropdown-item" asp-area="Customer" asp-controller="Search" asp-action="Index">Search by Text</a>
                                 <a class="dropdown-item" asp-area="Customer" asp-controller="Search" asp-action="Grid">Search by Grid</a>
+                                <a class="dropdown-item" asp-area="Customer" asp-controller="Google" asp-action="Index">Google Search</a>
                             </div>
                         </li>
                         @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
