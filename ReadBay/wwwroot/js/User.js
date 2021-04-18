@@ -11,12 +11,7 @@ function loadDataTable() {
             "url": "/Admin/User/GetAll"
         },
         "columns": [
-            { "data": "name", "width": "15%" },
-            { "data": "email", "width": "15%" },
-            { "data": "phoneNumber", "width": "15%" },
-            { "data": "company.name", "width": "15%" },
-            { "data": "role", "width": "15%" },
-            {      //Lockoout Account
+            {      //Lockout Account Button
                 "data": {
                     id: "id", lockoutEnd: "lockoutEnd"
                 },
@@ -27,8 +22,8 @@ function loadDataTable() {
                         //if true user is currently locked
                         return `
                             <div class="text-center">
-                                <a onclick=LockUnlock('${data.id}') class="btn btn-danger text-white" style="cursor:pointer; width:100px;">
-                                    <i class="fas fa-lock-open"></i>  Unlock User
+                                <a onclick=LockUnlock('${data.id}') class="btn-sm btn-success text-white" style="cursor:pointer; width:100px;">
+                                    <i class="fas fa-lock-open"></i>  Unlock
                                 </a>
                             </div>
                            `;
@@ -36,15 +31,21 @@ function loadDataTable() {
                     else {
                         return `
                             <div class="text-center">
-                                <a onclick=LockUnlock('${data.id}') class="btn btn-success text-white" style="cursor:pointer; width:100px;">
-                                    <i class="fas fa-lock"></i>  Lock User
+                                <a onclick=LockUnlock('${data.id}') class="btn-sm btn-danger text-white" style="cursor:pointer; width:100px;">
+                                    <i class="fas fa-lock"></i> Lock
                                 </a>
                             </div>
                            `;
                     }
 
-                }, "width": "25%"
-            }
+                }, "width": "15%"
+            },
+            { "data": "name", "width": "15%" },
+            { "data": "email", "width": "25%" },           
+            { "data": "company.name", "width": "20%" },
+            { "data": "role", "width": "10%" },
+            { "data": "phoneNumber", "width": "15%" },
+            
         ]
     });
 }
@@ -67,5 +68,4 @@ function LockUnlock(id) {
             }
         }
     });
-
 }

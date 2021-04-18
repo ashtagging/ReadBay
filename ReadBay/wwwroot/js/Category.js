@@ -11,7 +11,7 @@ function loadDataTable() {
             "url": "/Admin/Category/GetAll"
         },
         "columns": [
-            { "data": "name", "width": "60%" },
+            { "data": "name", "width": "80%" },
             {
                 "data": "id",
                 "render": function (data) {
@@ -25,7 +25,7 @@ function loadDataTable() {
                                 </a>
                             </div>
                            `;
-                }, "width": "40%"
+                }, "width": "20%"
             }
         ]
     });
