@@ -79,7 +79,7 @@
     */
     function formatOutput(bookImg, title, author, publisher, bookLink, bookIsbn) {
         // console.log(title + ""+ author +" "+ publisher +" "+ bookLink+" "+ bookImg)
-        var viewUrl = 'book.html?isbn=' + bookIsbn; //constructing link for bookviewer
+        var viewUrl = "https://www.google.com/search?tbo=p&tbm=bks&q=isbn:" + bookIsbn; //constructing link for bookviewer
         var htmlCard = `<div class="col-lg-6">
        <div class="card" style="">
          <div class="row no-gutters">
@@ -91,7 +91,7 @@
                <h5 class="card-title">${title}</h5>
                <p class="card-text">Author: ${author}</p>
                <p class="card-text">Publisher: ${publisher}</p>
-               <a target="_blank" href="${viewUrl}" class="btn btn-secondary">Read Book</a>
+               <a target="_blank" href="${viewUrl}" class="btn btn-secondary">Redirect to Google ISBN Search</a>
              </div>
            </div>
          </div>
