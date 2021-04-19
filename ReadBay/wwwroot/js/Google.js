@@ -91,7 +91,7 @@
                <h5 class="card-title">${title}</h5>
                <p class="card-text">Author: ${author}</p>
                <p class="card-text">Publisher: ${publisher}</p>
-               <a target="_blank" href="${viewUrl}" class="btn btn-secondary">Redirect to Google ISBN Search</a>
+               <a target="_blank" href="${viewUrl}" class="btn btn-primary">Redirect to Google ISBN Search</a>
              </div>
            </div>
          </div>
