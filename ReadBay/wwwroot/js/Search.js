@@ -19,21 +19,18 @@ function loadDataTable() {
             { "data": "price", "width": "10%" },
             { "data": "price50", "width": "10%" },
             { "data": "price100", "width": "10%" },
-            //{
-            //    "data": "id",
-            //    "render": function (data) {
-            //        return `
-            //                <div class="text-center">
-            //                    <a href="/Admin/Product/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
-            //                        <i class="fas fa-edit"></i> 
-            //                    </a>
-            //                    <a onclick=Delete("/Admin/Product/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
-            //                        <i class="fas fa-trash-alt"></i> 
-            //                    </a>
-            //                </div>
-            //               `;
-            //    }, "width": "40%"
-            //}
+            {
+                "data": "id",
+                "render": function (data) {
+                    return `
+                            <div class="text-center">
+                                <a href="/Customer/Search/Details/${data}" class="btn btn-success text-white" style="cursor:pointer">
+                                    <i class="bi bi-box-arrow-in-right">Details</i>
+                                </a>
+                                
+                           `;
+                }, "width": "20%"
+            }
         ]
     });
 }

@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ReadBay.DataAccess.Repository.IRepository;
 using ReadBay.Models;
 using ReadBay.Models.ViewModels;
+using ReadBay.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ReadBay.Areas.Customer.Controllers
@@ -37,8 +41,19 @@ namespace ReadBay.Areas.Customer.Controllers
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,BookType");
             return View(productList);
         }
+        public IActionResult Details(int id)
+        {
+            var productFromDb = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id, includeProperties: "Category,BookType");
+            ShoppingCart cartObj = new ShoppingCart()
+            {
+                Product = productFromDb,
+                ProductId = productFromDb.Id
+            };
+            return View(cartObj);
+        }
 
-       
+
+
 
         //GET: Admin/Product/Upsert
         public IActionResult Upsert(int? id)
@@ -73,85 +88,57 @@ namespace ReadBay.Areas.Customer.Controllers
 
         }
 
-        // Upsert Post Action Method
-        // Incorporates
+        //HTTP Post Request for ShoppingCart in Details
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductVM productVM)
+        [Authorize]
+        public IActionResult Details(ShoppingCart CartObject)
         {
+            CartObject.Id = 0;
             if (ModelState.IsValid)
             {
-                string webRootPath = _hostEnvironment.WebRootPath;
-                var files = HttpContext.Request.Form.Files;
+                //Add to cart
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                CartObject.ApplicationUserId = claim.Value;
 
-                // if files.Count> 0 File is uploaded
-                if (files.Count > 0)
+                // Rerieve Shopping cart from Db based on userId & productId
+                ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.GetFirstOrDefault(
+                    u => u.ApplicationUserId == CartObject.ApplicationUserId && u.ProductId == CartObject.ProductId, includeProperties: "Product");
+                if (cartFromDb == null)
                 {
-                    string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(webRootPath, @"Images\Products");
-                    var extenstion = Path.GetExtension(files[0].FileName);
-
-                    if (productVM.Product.ImageUrl != null)
-                    {
-                        //If this is true then it is an edit and we need to remove old image
-
-                        var imagePath = Path.Combine(webRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
-                        if (System.IO.File.Exists(imagePath))
-                        {
-                            System.IO.File.Delete(imagePath);
-                        }
-                    }
-                    // Upload new file after old file is deleted
-                    using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
-                    {
-                        files[0].CopyTo(filesStreams);
-                    }
-                    productVM.Product.ImageUrl = @"\Images\Products\" + fileName + extenstion;
+                    // If no records exist in database for that product for that user
+                    _unitOfWork.ShoppingCart.Add(CartObject);
                 }
                 else
                 {
-                    //Update when the image is not altered
-                    if (productVM.Product.Id != 0)
-                    {
-                        Product objFromDb = _unitOfWork.Product.Get(productVM.Product.Id);
-                        productVM.Product.ImageUrl = objFromDb.ImageUrl;
-                    }
-                }
-
-
-                if (productVM.Product.Id == 0)
-                {
-                    _unitOfWork.Product.Add(productVM.Product);
-                }
-                else
-                {
-                    _unitOfWork.Product.Update(productVM.Product);
+                    cartFromDb.Count += CartObject.Count;
+                    _unitOfWork.ShoppingCart.Update(cartFromDb);
                 }
                 _unitOfWork.Save();
+
+                //In session we will store number of items in the shopping cart
+                var count = _unitOfWork.ShoppingCart
+                    .GetAll(c => c.ApplicationUserId == CartObject.ApplicationUserId).ToList().Count();
+
+                //ssShoppingCart = shoppingCart Session                              
+                HttpContext.Session.SetInt32(SD.ssShoppingCart, count);
+
                 return RedirectToAction(nameof(Index));
             }
-            // Load ProductVM.CategoryList
             else
             {
-                productVM.CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
+                var productFromDb = _unitOfWork.Product.
+                        GetFirstOrDefault(u => u.Id == CartObject.ProductId, includeProperties: "Category,BookType");
+                ShoppingCart cartObj = new ShoppingCart()
                 {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                });
-                productVM.BookTypeList = _unitOfWork.BookType.GetAll().Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                });
-                if (productVM.Product.Id != 0)
-                {
-                    productVM.Product = _unitOfWork.Product.Get(productVM.Product.Id);
-                }
+                    Product = productFromDb,
+                    ProductId = productFromDb.Id
+                };
+                return View(cartObj);
             }
-            return View(productVM);
         }
 
-        
 
         #region API CALLS
 
