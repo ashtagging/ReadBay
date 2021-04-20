@@ -39,6 +39,7 @@ namespace ReadBay
             services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()     //AdddefaultIdentity does not have support for IdentityRole confirm signin required also removed and add default topken providers added
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailOptions>(Configuration);
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddScoped<IUnitOfWork, UnitOfWork>(); //UnitOfWork added as part of dependency injection  
             services.AddControllersWithViews(); //.AddRazorRuntimeCompilation(); Needed for 3.1 and below
