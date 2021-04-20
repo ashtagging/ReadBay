@@ -23,7 +23,7 @@ namespace ReadBay.DataAccess.Repository.IRepository
         // Retrieves all the rows (records)
         IEnumerable<T> List<T>(string procedureName, DynamicParameters param = null);
 
-        //Stored Procedure that returns two tables
+        // Stored Procedure that returns two tables
         Tuple<IEnumerable<T1>, IEnumerable<T2>> List<T1, T2>(string procedureName, DynamicParameters param = null);
     }
 }

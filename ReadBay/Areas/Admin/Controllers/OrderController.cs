@@ -42,6 +42,7 @@ namespace ReadBay.Areas.Admin.Controllers
             return View(OrderVM);
         }
 
+        // Order Summary Details
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Details")]

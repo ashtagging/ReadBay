@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace ReadBay.DataAccess.Repository.IRepository
 {
-    // This is a generic repository in which the type of object (T) is not known
+    // Interface for a collection of Objects in memory
+    // This is the generic repository in which the type of object (T) is not known
+
     public interface IRepository<T> where T: class
     {
         T Get(int id);
 
-        // returns all 
+        // Returns all 
         IEnumerable<T> GetAll(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
@@ -25,11 +27,13 @@ namespace ReadBay.DataAccess.Repository.IRepository
             string includeProperties = null
             );
 
+        //Add object
         void Add(T entity);
 
         //Remove an object or a complete entity, only 1 neccessary?
         void Remove(int id);
 
+        
         void Remove(T entity);
 
         void RemoveRange(IEnumerable<T> entity);

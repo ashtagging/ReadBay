@@ -36,11 +36,7 @@ namespace ReadBay.Areas.Customer.Controllers
         {
             return View();
         }
-        public IActionResult Grid()
-        {
-            IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,BookType");
-            return View(productList);
-        }
+
         public IActionResult Details(int id)
         {
             var productFromDb = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id, includeProperties: "Category,BookType");
@@ -52,10 +48,7 @@ namespace ReadBay.Areas.Customer.Controllers
             return View(cartObj);
         }
 
-
-
-
-        //GET: Admin/Product/Upsert
+    //GET: Admin/Product/Upsert
         public IActionResult Upsert(int? id)
         {
             // View Model added to hold product object and incorporate drop downs for Category & Book Type

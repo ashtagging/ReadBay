@@ -17,7 +17,7 @@
                     <h4><i class="fas fa-shopping-cart"></i> &nbsp; Order Summary</h4>
                 </div>
                 <div class="col-12 col-md-4 offset-md-2 text-right">
-                    <a asp-area="Admin" asp-controller="Order" asp-action="Index" class="btn btn-success form-control btn-sm">Back to Orders</a>
+                    <a asp-area="Admin" asp-controller="Order" asp-action="Index" class="btn btn-success form-control btn-sm"><h6>Back to Orders</h6></a>
                 </div>
             </div>
             <div class="card-body">
@@ -26,7 +26,7 @@
                         <div class="col-12 col-lg-6 pb-4">
                             <div class="row">
                                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                    <span class="text-primary">Order Details:</span>
+                                    <span class="text-primary"> &nbsp Order Details</span>
                                 </h4>
                             </div>
                             <div class="row my-1">
@@ -304,12 +304,12 @@
             var tracking = document.getElementById("trackingNumber").value;
             var carrier = document.getElementById("carrier").value;
             if (tracking.toString() == '') {
-                swal("Error", "Please enter tracking number", "error")
+                swal("Error", "Please enter a tracking number", "error")
                 return false;
             }
             else {
                 if (carrier.toString() == '') {
-                    swal("Error", "Please enter carrier", "error")
+                    swal("Error", "Please enter a carrier", "error")
                     return false;
                 }
                 else {

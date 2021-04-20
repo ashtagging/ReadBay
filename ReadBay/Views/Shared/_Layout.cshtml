@@ -19,6 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container">
+                <a asp-area="" asp-controller="Home" asp-action="Index"><h5><i class="fas fa-book-open text-white align-text-bottom">&nbsp </i></h5></a>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ReadBay</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +45,8 @@
                                 Search
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" asp-area="Customer" asp-controller="Search" asp-action="Index">Search by Text</a>
-                                <a class="dropdown-item" asp-area="Customer" asp-controller="Search" asp-action="Grid">Search by Grid</a>
-                                <a class="dropdown-item" asp-area="Customer" asp-controller="Google" asp-action="Index">Google Search</a>
+                                <a class="dropdown-item" asp-area="Customer" asp-controller="Search" asp-action="Index">Search Books</a>                               
+                                <a class="dropdown-item" asp-area="Customer" asp-controller="Google" asp-action="Index">Google Books Search</a>
                             </div>
                         </li>
                         @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))

@@ -47,15 +47,17 @@ namespace ReadBay.DataAccess.Repository
 
         public IApplicationUserRepository ApplicationUser { get; private set; }
 
-        public void Dispose()
-        {
-            _db.Dispose();
-        }
-
         // Changes we make in repository are not saved but are saved in each models repository in Update()
         public void Save()
         {
             _db.SaveChanges();
         }
+
+        public void Dispose()
+        {
+            _db.Dispose();
+        }
+
+
     }
 }
