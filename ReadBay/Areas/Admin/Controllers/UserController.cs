@@ -24,7 +24,8 @@ namespace ReadBay.Areas.Admin.Controllers
         {
             _db = db;
         }
-        // Index View GET: Admin/Categories
+
+        // Index View GET: Admin/Users
         public IActionResult Index()
         {
             return View();

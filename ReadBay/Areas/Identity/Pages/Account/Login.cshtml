@@ -7,11 +7,11 @@
     ViewData["Title"] = "Log in";
 }
 
-<div id="logreg-forms">
-
-    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+<div id="logreg-forms" class="">
+    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">        
         <h1 class="h3 mb-3 font-weight-bold text-primary" style="text-align:center;">Login</h1>
         <div class="social-login pb-0 mb-0">
+            <hr />
             @foreach (var provider in Model.ExternalLogins)
             {
                 @if (provider.Name.ToLower().Contains("facebook"))
@@ -41,19 +41,17 @@
                         </button>
                     }
                 }
-
             }
         </div>
-
+        <hr />
     </form>
-    <form id="account" method="post">
-
+    <form id="account" method="post">        
         <input asp-for="Input.Email" placeholder="Email..." type="email" class="mb-1 form-control" />
         <input asp-for="Input.Password" placeholder="Password..." type="password" class="form-control" />
         <div asp-validation-summary="All" class="text-danger"></div>
-        <a id="forgot-password" asp-page="./ForgotPassword" class="pb-2 text-info text-center">Forgot Password?</a>
-        <button type="submit" class="btn btn-success btn-block"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-        </br>
+        <a id="forgot-password" asp-page="./ForgotPassword" class="pb-2 text-info text-center">Forgotten Password? Click here</a>
+        <button type="submit" class="btn btn-success btn-block"><i class="fas fa-sign-in-alt"></i> Sign in</button>       
+        <hr/>
         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-primary text-white"><i class="fas fa-user-plus"></i> Register as a new user</a>
     </form>
 </div>

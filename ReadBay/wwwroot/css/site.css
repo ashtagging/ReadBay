@@ -13,6 +13,8 @@ a {
 }
 
 
+
+
 /*background-color: #1b6ec2;*/
 background-color: #2c3e50;
 border-color: #1861ac;
@@ -40,7 +42,7 @@ html {
 }
 
 .box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: .75rem .75rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
@@ -189,4 +191,13 @@ body {
 .form-signup .social-login {
     width: 210px !important;
     margin: 0 auto;
+}
+
+/*For mobile phones:*/
+@media only screen and (max-width: 768px) {
+header {
+        position: fixed;
+        width: 100%;  
+        z-index:1000;
+    }
 }

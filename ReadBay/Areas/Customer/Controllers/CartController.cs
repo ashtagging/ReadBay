@@ -21,17 +21,13 @@ namespace ReadBay.Areas.Customer.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<IdentityUser> _userManager;
 
-        //// Email for Authorized Company
-        //private readonly IEmailSender _emailSender;
-
         [BindProperty]
         public ShoppingCartVM ShoppingCartVM { get; set; }
 
-        public CartController(IUnitOfWork unitOfWork, IEmailSender emailSender,UserManager<IdentityUser> userManager)
+        public CartController(IUnitOfWork unitOfWork, UserManager<IdentityUser> userManager)
         {
             _unitOfWork = unitOfWork;           
-            _userManager = userManager;
-            //_emailSender = emailSender;
+            _userManager = userManager;           
         }
 
         public IActionResult Index()

@@ -11,6 +11,25 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+/*/test*/
+.hrdivider {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+    .hrdivider span {
+        position: absolute;
+        top: -11px;
+        background: #fff;
+        padding: 0 20px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+
 :root {
     --blue: #033c73;
     --indigo: #6610f2;
