@@ -86,9 +86,7 @@
                             <button type="submit" class="btn btn-success form-control">Register</button>
                         </div>
                     </form>
-                    <p class="text-center">
-                        By <em>Registering</em> an account you agree to our <a href="" target="_blank"> terms of service </a>
-                    </p>
+
                     <hr />
                     <p class="text-center text-primary">Or Sign Up with</p>
                     <hr />
@@ -133,13 +131,15 @@
                             </div>
                         </form>
                     }
-                </div>
+                    <hr />
+                    <p class="text-center text-primary">
+                        By <em>Registering</em> an account you agree to our <a class="nav-link" asp-area="Identity" asp-page="/Account/TermsOfService">Terms of Service</a>
+                    </p>
+                </div>                             
             </div>
         </div>
     </div>
 </div>
-
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

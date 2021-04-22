@@ -42,13 +42,13 @@ namespace ReadBay.Models
 
         public string ImageUrl { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Select A Category")]
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Select A Book Type")]
         public int BookTypeId { get; set; }
 
         [ForeignKey("BookTypeId")]
