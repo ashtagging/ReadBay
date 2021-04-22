@@ -192,12 +192,27 @@ body {
     width: 210px !important;
     margin: 0 auto;
 }
-
+@media only screen and (max-width:800px) {
+    /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+    /*For mobile phones:*/
+    .menu, .main, .right {
+        width: 100%;
+    }
+}
 /*For mobile phones:*/
-@media only screen and (max-width: 768px) {
+/*@media only screen and (max-width: 768px) {
 header {
         position: fixed;
         width: 100%;  
         z-index:1000;
     }
-}
+}*/
