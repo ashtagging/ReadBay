@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using ReadBay.DataAccess.Repository.IRepository;
 using ReadBay.Models;
 using ReadBay.Models.ViewModels;
@@ -12,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace ReadBay.Areas.Customer.Controllers
 {
@@ -21,13 +24,16 @@ namespace ReadBay.Areas.Customer.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<IdentityUser> _userManager;
 
+        private  TwilioSettings _twilioOptions { get; set; }
+
         [BindProperty]
         public ShoppingCartVM ShoppingCartVM { get; set; }
 
-        public CartController(IUnitOfWork unitOfWork, UserManager<IdentityUser> userManager)
+        public CartController(IUnitOfWork unitOfWork, UserManager<IdentityUser> userManager, IOptions<TwilioSettings> twilioOptions)
         {
             _unitOfWork = unitOfWork;           
-            _userManager = userManager;           
+            _userManager = userManager;
+            _twilioOptions = twilioOptions.Value;
         }
 
         public IActionResult Index()
@@ -214,6 +220,23 @@ namespace ReadBay.Areas.Customer.Controllers
         }
         public IActionResult OrderConfirmation(int id)
         {
+            OrderHeader orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == id);
+            TwilioClient.Init(_twilioOptions.AccountSID, _twilioOptions.AuthToken);
+
+            // From Twilio Documentation
+            try
+            {
+                // text message 
+                var message = MessageResource.Create(
+                    body: "Thank you for Ordering with ReadBay. Your Order ID is: " + id,
+                    from: new Twilio.Types.PhoneNumber(_twilioOptions.PhoneNumber),
+                    to: new Twilio.Types.PhoneNumber(orderHeader.PhoneNumber)
+                    );
+            }
+            catch (Exception ex)
+            {
+
+            }
             return View(id);
         }
     }

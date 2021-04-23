@@ -8,6 +8,7 @@
     <PackageReference Include="Google.Apis" Version="1.51.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.5" />
+    <PackageReference Include="Twilio" Version="5.59.0" />
   </ItemGroup>
 
 </Project>
