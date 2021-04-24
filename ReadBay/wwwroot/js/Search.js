@@ -24,7 +24,7 @@ function loadDataTable() {
                 "render": function (data) {
                     return `
                             <div class="text-center">
-                                <a href="/Customer/Search/Details/${data}" class="btn btn-primary text-white" style="cursor:pointer">
+                                <a href="/Customer/Home/Details/${data}" class="btn btn-primary text-white" style="cursor:pointer">
                                     <i class="bi bi-box-arrow-in-right">Details</i>
                                 </a>
                                 
