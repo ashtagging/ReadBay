@@ -201,11 +201,7 @@
                                         <input asp-for="OrderHeader.PaymentStatus" type="text" readonly class="form-control" />
                                     </div>
                                 </div>
-                                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
-                                {
-                                    <input type="submit" value="Update Order Details" class="btn btn-warning form-control"
-                                           formaction="/Admin/Order/UpdateOrderDetails" formmethod="post" />
-                                }
+                                
                             }
                         </div>
                         <div class="col-12 col-lg-5 offset-lg-1">
