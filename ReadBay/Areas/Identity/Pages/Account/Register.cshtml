@@ -87,11 +87,11 @@
                         </div>
                     </form>
 
-                    <hr />
-                    <p class="text-center text-primary">Or Sign Up with</p>
-                    <hr />
                     @if (!User.IsInRole(SD.Role_Admin) && !User.IsInRole(SD.Role_Employee))
                     {
+                        <hr />
+                        <p class="text-center text-primary">Or Sign Up with</p>
+                        <hr />
                         <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                             <div class="row">
                                 <p>

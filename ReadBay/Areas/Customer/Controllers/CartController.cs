@@ -226,7 +226,7 @@ namespace ReadBay.Areas.Customer.Controllers
             // From Twilio Documentation
             try
             {
-                // text message 
+                // Text Message 
                 var message = MessageResource.Create(
                     body: "Thank you for Ordering with ReadBay. Your Order ID is: " + id,
                     from: new Twilio.Types.PhoneNumber(_twilioOptions.PhoneNumber),
