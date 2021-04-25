@@ -36,10 +36,8 @@ namespace ReadBay
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()     //AdddefaultIdentity does not have support for IdentityRole confirm signin required also removed and add default topken providers added
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            //services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()     //AdddefaultIdentity does not have support for IdentityRole confirm signin required also removed and add default topken providers added
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration);
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
