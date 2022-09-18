@@ -14,6 +14,7 @@ namespace ReadBay.DataAccess.Repository
         
         private readonly ApplicationDbContext _db;
 
+        // Dependency Injection
         public CategoryRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
